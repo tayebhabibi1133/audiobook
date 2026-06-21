@@ -1,4 +1,6 @@
 
+import 'package:audiobook/about_page.dart';
+import 'package:audiobook/contact_page.dart';
 import 'package:audiobook/lists.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
@@ -60,7 +62,11 @@ class _MainPageState extends State<MainPage> {
                         Color.fromRGBO(255, 208, 0, 1),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return AboutPage();
+                      },));
+                    },
                     child: Row(
                       mainAxisAlignment: .center,
                       children: [
@@ -76,7 +82,11 @@ class _MainPageState extends State<MainPage> {
                         Color.fromRGBO(255, 208, 0, 1),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return ContactPage();
+                      },));
+                    },
                     child: Row(
                       mainAxisAlignment: .center,
                       children: [

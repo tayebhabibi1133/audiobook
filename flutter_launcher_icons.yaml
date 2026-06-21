@@ -1,0 +1,7 @@
+# flutter pub run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  adaptive_icon_background: "asset/icon/android_background.png"
+  adaptive_icon_foreground: "asset/icon/android_foreground.png"
+  image_path: "asset/icon/ios_icon.png"
