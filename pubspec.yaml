@@ -36,10 +36,14 @@ dependencies:
   cupertino_icons: ^1.0.8
   just_audio: ^0.10.5
   volume_controller: ^3.5.0
+  flutter_native_splash: ^2.4.7
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
