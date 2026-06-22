@@ -6,7 +6,7 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Uri url = Uri.parse('https://t.me/IslamicAudiobooksFrasi');
+    final Uri url = Uri.parse('https://t.me/ISLAM_AudioBooks');
 
     return Scaffold(
       appBar: AppBar(),
