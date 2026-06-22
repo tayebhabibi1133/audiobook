@@ -5,16 +5,17 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        spacing: 6,
-        mainAxisAlignment: .center,
-        children: [
-          Text('معتصم'),
-          Text('روشنگران')
-
-          
-        ],
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          spacing: 6,
+          mainAxisAlignment: .center,
+          children: [
+            Text('معتصم', style: TextStyle(fontSize: 30)),
+            Text('روشنگران', style: TextStyle(fontSize: 30)),
+          ],
+        ),
       ),
     );
   }
