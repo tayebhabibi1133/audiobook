@@ -21,7 +21,9 @@ class _PlayerPageState extends State<PlayerPage> {
   void initState() {
     int currentIndex = widget.index + 1;
     super.initState();
-    AudioPlayerServices.loadAudio('asset/audio/Track_$currentIndex.mp3');
+    if (currentIndex < 10) {
+     AudioPlayerServices.loadAudio('asset/audio/Track_$currentIndex.mp3'); 
+    }
     AudioPlayerServices.playAudio();
    _subscription = VolumeControl.controller.addListener((value) {
       setState(() {
