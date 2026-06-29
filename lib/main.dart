@@ -54,7 +54,7 @@ class _MainPageState extends State<MainPage> {
               ),
               child: ClipRRect(
                 borderRadius: .circular(30),
-                child: Image.asset('asset/image/index_photo.jpeg'),
+                child: Image.asset('asset/image/index_photo.png'),
               ),
             ),
             Container(
