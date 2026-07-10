@@ -1,4 +1,3 @@
-
 import 'package:audiobook/about_page.dart';
 import 'package:audiobook/contact_page.dart';
 import 'package:audiobook/lists.dart';
@@ -48,7 +47,16 @@ class _MainPageState extends State<MainPage> {
           spacing: 20,
           mainAxisAlignment: .spaceEvenly,
           children: [
-            Placeholder(fallbackHeight: 200),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: .circular(30),
+                boxShadow: [BoxShadow(spreadRadius: 2, blurRadius: 10)],
+              ),
+              child: ClipRRect(
+                borderRadius: .circular(30),
+                child: Image.asset('asset/image/index_photo.png'),
+              ),
+            ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -63,9 +71,14 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return AboutPage();
-                      },));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return AboutPage();
+                          },
+                        ),
+                      );
                     },
                     child: Row(
                       mainAxisAlignment: .center,
@@ -83,9 +96,14 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return ContactPage();
-                      },));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ContactPage();
+                          },
+                        ),
+                      );
                     },
                     child: Row(
                       mainAxisAlignment: .center,
