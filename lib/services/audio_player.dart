@@ -1,4 +1,5 @@
 
+import 'package:audiobook/audio_files.dart';
 import 'package:just_audio/just_audio.dart';
 
 class AudioPlayerServices {
@@ -10,8 +11,11 @@ static  Stream<SequenceState?> get sequenceStateStream => _player.sequenceStateS
 
 
 
-static Future<void> loadAudio(String assetPath) async {
- await _player.setAsset(assetPath);
+static Future<void> loadAudio(int index)async {
+final list = AudioFiles.getPlaylist();
+String currentFile = list[index];
+
+ await _player.setAsset(currentFile);
 }
 
 static Stream<bool> playingState() {
@@ -32,9 +36,7 @@ static Future<void> playHandler() async {
     await _player.play();
   }
 
- static Future<void> pauseAudio() async {
-    await _player.pause();
-  }
+
 
  static Future<void> nextAudio() async {
     await _player.seekToNext();
