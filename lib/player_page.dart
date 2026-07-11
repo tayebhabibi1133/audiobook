@@ -19,9 +19,8 @@ class _PlayerPageState extends State<PlayerPage> {
   late final StreamSubscription<double> _subscription;
   @override
   void initState() {
-    int currentIndex = widget.index + 1;
     super.initState();
-    AudioPlayerServices.loadAudio('asset/audio/Track_$currentIndex.mp3');
+    AudioPlayerServices.loadAudio(widget.index);
     AudioPlayerServices.playAudio();
    _subscription = VolumeControl.controller.addListener((value) {
       setState(() {
