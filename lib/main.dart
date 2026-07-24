@@ -1,6 +1,7 @@
 import 'package:audiobook/about_page.dart';
 import 'package:audiobook/contact_page.dart';
 import 'package:audiobook/lists.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -24,6 +25,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        pageTransitionsTheme: PageTransitionsTheme(builders: {TargetPlatform.android: ZoomPageTransitionsBuilder()}),
         scaffoldBackgroundColor: Color.fromARGB(255, 251, 245, 211),
       ),
       home: MainPage(),
