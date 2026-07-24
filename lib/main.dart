@@ -24,6 +24,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        pageTransitionsTheme: PageTransitionsTheme(builders: {TargetPlatform.android: ZoomPageTransitionsBuilder()}),
         scaffoldBackgroundColor: Color.fromARGB(255, 251, 245, 211),
       ),
       home: MainPage(),
