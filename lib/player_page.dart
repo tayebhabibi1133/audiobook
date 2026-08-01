@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:audiobook/audio_files.dart';
 import 'package:audiobook/services/audio_player.dart';
 import 'package:audiobook/services/volume_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PlayerPage extends StatefulWidget {
   const PlayerPage({super.key, required this.index});
@@ -15,6 +17,7 @@ class PlayerPage extends StatefulWidget {
 }
 
 class _PlayerPageState extends State<PlayerPage> {
+  double fontSize = 15;
   double volumeValue = 0;
   late final StreamSubscription<double> _subscription;
   @override
@@ -29,6 +32,11 @@ class _PlayerPageState extends State<PlayerPage> {
     },);
   }
 
+void changeFontSize({required double newValue}){
+fontSize = newValue;
+setState(() {});
+}
+
   @override
   void dispose() {
     super.dispose();
@@ -42,8 +50,15 @@ class _PlayerPageState extends State<PlayerPage> {
       appBar: AppBar(title: Text('درس $currentIndex')),
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: .spaceAround,
           children: [
+            TextReader(fontSize: fontSize, index: currentIndex,),
+            StreamBuilder(stream: Stream.value(fontSize), builder: (context, snapshot) {
+              return Slider(min: 1,max: 50,
+              value: fontSize, onChanged: (value){
+              changeFontSize(newValue: value);
+            });
+            },),
             StreamBuilder<Duration>(
               stream: AudioPlayerServices.positionStream,
               builder: (context, snapshot) {
@@ -154,5 +169,77 @@ class _PlayerPageState extends State<PlayerPage> {
         ),
       ),
     );
+  }
+}
+
+
+class TextReader extends StatefulWidget {
+  const TextReader({super.key, required this.fontSize, required this.index});
+  final double fontSize;
+  final int index;
+  @override
+  State<TextReader> createState() => _TextReaderState();
+}
+
+class _TextReaderState extends State<TextReader> {
+String displayText = '';
+bool isLoading = true;
+
+@override
+  void initState() {
+    super.initState();
+    readJsonFile();
+  }
+
+Future<void> readJsonFile() async {
+  try {
+    String jsonString = await rootBundle.loadString('asset/text_files/text_file.json');
+  Map<String, dynamic> jsonData = jsonDecode(jsonString);
+
+  setState(() {
+    displayText = jsonData['text_${widget.index}'];
+    isLoading = displayText == '' ? true : false;
+  });
+  } catch (e) {
+    setState(() {
+      displayText = e.toString();
+    });
+  }
+}
+
+  @override
+  Widget build(BuildContext context) {
+    double deviceHeight = MediaQuery.sizeOf(context).height;
+    double deviceWidth = MediaQuery.sizeOf(context).width;
+    return Container(
+      padding: .symmetric(vertical: 5, horizontal: 15),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(color: Colors.black),
+          BoxShadow(
+            color:  Color.fromARGB(255, 251, 245, 211),
+            spreadRadius: -2,
+            blurRadius: 10
+          )
+        ],
+        border: Border.all(
+          color: Colors.green,
+          width: 3
+        ),
+        borderRadius: .circular(30),
+      ),
+      margin: .all(10),
+      height: deviceHeight * 0.5,
+      width: deviceWidth,
+      child: SingleChildScrollView(
+        child: isLoading ? Center(child: CircularProgressIndicator()) :
+        SelectableText('''
+
+$displayText
+
+''', textDirection: .rtl, style: TextStyle(fontSize: widget.fontSize,),
+      ),
+      
+    ));
   }
 }
