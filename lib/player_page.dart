@@ -193,7 +193,7 @@ bool isLoading = true;
 
 Future<void> readJsonFile() async {
   try {
-    String jsonString = await rootBundle.loadString('asset/text_files/text_file.json');
+    String jsonString = await rootBundle.loadString('asset/text/text_file.json');
   Map<String, dynamic> jsonData = jsonDecode(jsonString);
 
   setState(() {

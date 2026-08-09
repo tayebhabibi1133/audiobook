@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
         pageTransitionsTheme: PageTransitionsTheme(builders: {TargetPlatform.android: ZoomPageTransitionsBuilder()}),
         scaffoldBackgroundColor: Color.fromARGB(255, 251, 245, 211),
       ),
-      home: PlayerPage(index: 10) //MainPage(),
+      home: PlayerPage(index: 3) //MainPage(),
     );
   }
 }
