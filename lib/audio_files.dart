@@ -2,7 +2,7 @@ class AudioFiles {
 
 static List<String> getPlaylist(){
   List<String> list = [];
-  for (var i = 1; i < 60; i++) {
+  for (var i = 1; i < 61; i++) {
     list.add('asset/audio/Track_$i.ogg');
   }
   return list;
